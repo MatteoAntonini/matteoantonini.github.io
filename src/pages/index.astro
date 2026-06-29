@@ -3,13 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PostList from '../components/PostList.astro';
 import { getCollection } from 'astro:content';
 
-// Get all blog posts and sort them by date
 const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort((a, b) => {
   return new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf();
 });
 
-// Show up to 5 posts on the frontpage
 const posts = sortedPosts.slice(0, 5).map(post => ({
   ...post,
   url: `/posts/${post.id}`,
@@ -17,25 +15,39 @@ const posts = sortedPosts.slice(0, 5).map(post => ({
 }));
 ---
 
-<BaseLayout title="Welcome">
+<BaseLayout
+  title="Home"
+  description="AI Engineer specializing in multi-agent systems and agentic architectures. Writing about what I build and what I learn."
+>
   <div class="max-w-4xl mx-auto">
-    <section class="text-center py-[8vh]" transition:animate="fade">
-      <h1 class="text-7xl mb-8 font-bold">Welcome to Brook 2.0</h1>
-      <p class="text-2xl text-muted-foreground max-w-3xl mx-auto mb-14">
-        A minimalist blog template for developers and writers focusing on clean typography and distraction-free
-        reading experience.
+    <section class="py-[8vh]" transition:animate="fade">
+      <h1 class="text-6xl md:text-7xl mb-6 font-bold">Matteo Antonini</h1>
+      <p class="text-xl md:text-2xl text-gray-500 dark:text-gray-400 max-w-2xl mb-10">
+        AI Engineer. I write about multi-agent systems, agentic architectures, and what I learn building them.
       </p>
-      <a href="https://github.com/holger1411/astro-brook" target="_blank" rel="noopener noreferrer" class="btn-primary btn-lg tracking-wide no-underline hover:no-underline transform transition-all duration-300 hover:scale-105 hover:shadow-[0_3.5rem_5rem_rgba(21,21,21,0.3)] shadow-[0_3rem_4rem_rgba(21,21,21,0.25)] dark:bg-white dark:text-black dark:hover:bg-gray-100">
-        View on GitHub
-      </a>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/blog"
+          class="btn-primary btn-lg tracking-wide no-underline hover:no-underline transform transition-all duration-300 hover:scale-105 hover:shadow-[0_3.5rem_5rem_rgba(21,21,21,0.3)] shadow-[0_3rem_4rem_rgba(21,21,21,0.25)] dark:bg-white dark:text-black dark:hover:bg-gray-100"
+        >
+          Read the blog
+        </a>
+        <a
+          href="/about"
+          class="btn-secondary btn-lg tracking-wide no-underline hover:no-underline"
+        >
+          About me
+        </a>
+      </div>
     </section>
 
     <section class="mx-auto" transition:animate="fade">
-      <PostList posts={posts} showImages={false} showExcerpt={false} showSeparators={true} showTags={false}/>
+      <h2 class="text-sm font-medium uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-8">Recent posts</h2>
+      <PostList posts={posts} showImages={false} showExcerpt={true} showSeparators={true} showTags={false} />
 
-      <div class="text-center mt-24">
-        <a href="/journal" class="text-lg font-medium text-black dark:text-white py-2 px-4 rounded-md inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:underline">
-          View All Posts <span aria-hidden="true">→</span>
+      <div class="mt-16">
+        <a href="/blog" class="text-base font-medium text-black dark:text-white py-2 inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:underline">
+          All posts <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>

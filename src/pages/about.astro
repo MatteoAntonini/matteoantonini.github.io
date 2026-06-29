@@ -2,52 +2,70 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About">
+<BaseLayout
+  title="About"
+  description="AI Engineer specializing in multi-agent systems and agentic architectures. Based in Rome, Italy."
+>
   <div class="max-w-3xl mx-auto">
-    <header class="mb-12 text-center" transition:animate="fade">
+    <header class="mb-12" transition:animate="fade">
       <h1 class="text-5xl mb-4">About</h1>
-      <p class="text-xl text-muted-foreground">
-        Learn more about Brook, a minimalist blog template
-      </p>
     </header>
-    
+
     <div class="prose prose-lg dark:prose-invert max-w-none" transition:animate="fade">
       <p>
-        Brook is a minimalist blog template designed for developers and writers who value clean typography 
-        and a distraction-free reading experience. Built with modern web technologies, Brook offers a 
-        perfect balance of simplicity and functionality.
+        I'm Matteo Antonini, an AI Engineer based in Rome, Italy.
       </p>
-      
-      <h2>Features</h2>
-      
-      <ul>
-        <li>Clean, minimalist design that puts your content first</li>
-        <li>Full dark mode support</li>
-        <li>Responsive layout for all devices</li>
-        <li>Content collections for easy content management</li>
-        <li>Markdown and MDX support for rich content</li>
-        <li>Code syntax highlighting for developers</li>
-        <li>Tags and categorization</li>
-        <li>SEO optimized</li>
-        <li>Fast performance with minimal JavaScript</li>
-        <li>Smooth page transitions</li>
-      </ul>
-      
-      <h2>Technology</h2>
-      
       <p>
-        Brook is built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>, 
-        a modern static site generator that delivers lightning-fast performance with a great developer 
-        experience. Combined with <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">Tailwind CSS</a> 
-        for styling, Brook provides a solid foundation for your content.
+        My background is unconventional: Economics undergrad, then a Master in Data Science
+        and Machine Learning — both 110/110 cum laude at the University of Rome Tor Vergata.
+        The degrees gave me the foundations. Most of what I actually know about AI I learned
+        by building it.
       </p>
-      
-      <h2>Get Started</h2>
-      
+
+      <h2>What I do</h2>
       <p>
-        Whether you're a developer looking to share code snippets, a writer seeking a clean platform for your 
-        stories, or anyone in between, Brook provides the perfect starting point for your content. Check out the 
-        <a href="/journal">Journal</a> to see it in action.
+        I work as an AI Engineer. My focus is on agentic
+        architectures: systems that don't just respond to prompts but reason across multiple
+        steps, use tools, and coordinate several models to get things done.
+      </p>
+      <p>
+        Clients are in energy, telco, and public administration. The hard problems aren't
+        the models — they're everything that happens between a working demo and something
+        that actually ships.
+      </p>
+
+      <h2>Stack</h2>
+      <p>
+        <strong>Agentic AI</strong> — Google ADK, LangGraph, LangChain, Agno, MCP Server<br />
+        <strong>LLMs</strong> — Azure OpenAI, Gemini, Claude, Deepseek<br />
+        <strong>Cloud</strong> — GCP / Vertex AI, Azure, Cloud Run, Docker<br />
+        <strong>Data</strong> — RAG pipelines, VectorDB, BigQuery, Snowflake, Airflow, dbt<br />
+        <strong>Dev</strong> — Python, FastAPI, Dash, Streamlit<br />
+        <strong>Automation</strong> — n8n, Apify
+      </p>
+
+      <h2>Teaching</h2>
+      <p>
+        I teach a module on multi-agent AI systems in the
+        <a href="/teaching">Master CESMA program</a> at the University of Rome Tor Vergata.
+        All course materials and code are open source and available on GitLab.
+      </p>
+
+      <h2>This blog</h2>
+      <p>
+        I write about what I build and what I learn. Multi-agent systems, agentic
+        architectures, tooling, patterns that work, and patterns that don't.
+        No tutorials for their own sake — only things I've actually used.
+      </p>
+
+      <hr />
+
+      <p>
+        <a href="mailto:matteoantonini94@gmail.com">matteoantonini94@gmail.com</a>
+        {' · '}
+        <a href="https://www.linkedin.com/in/antonini-matteo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {' · '}
+        <a href="https://gitlab.com/matteoantonini94" target="_blank" rel="noopener noreferrer">GitLab</a>
       </p>
     </div>
   </div>

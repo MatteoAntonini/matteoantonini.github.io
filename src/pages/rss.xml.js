@@ -10,8 +10,8 @@ export async function GET(context) {
   );
   
   return rss({
-    title: 'Brook Blog',
-    description: 'A minimalist blog template focusing on clean typography and distraction-free reading experience',
+    title: 'Matteo Antonini',
+    description: 'AI Engineer. Writing about multi-agent systems, agentic architectures, and building AI that works.',
     site: context.site,
     items: sortedPosts.map((post) => ({
       title: post.data.title,

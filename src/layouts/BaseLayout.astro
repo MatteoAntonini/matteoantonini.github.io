@@ -14,21 +14,20 @@ interface Props {
   author?: string;
 }
 
-const { 
-  title, 
-  description = "A minimalist blog template focusing on clean typography and distraction-free reading experience.", 
+const {
+  title,
+  description = "AI Engineer specializing in multi-agent systems and agentic architectures. Writing about what I build and what I learn.",
   image = "/og-image.png",
   type = "website",
   publishedDate,
   modifiedDate,
-  author = "Brook Team"
+  author = "Matteo Antonini"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = image.startsWith('/') ? new URL(image, Astro.site) : image;
-const siteName = "Brook Blog";
+const siteName = "Matteo Antonini";
 
-// Strukturierte Daten (JSON-LD) für bessere SEO
 const jsonLDWebsite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -47,12 +46,8 @@ const jsonLDArticle = publishedDate ? {
     "name": author
   },
   "publisher": {
-    "@type": "Organization",
+    "@type": "Person",
     "name": siteName,
-    "logo": {
-      "@type": "ImageObject",
-      "url": new URL("/favicon.svg", Astro.site).toString()
-    }
   },
   "datePublished": publishedDate.toISOString(),
   "dateModified": modifiedDate ? modifiedDate.toISOString() : publishedDate.toISOString(),
@@ -68,16 +63,13 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Brook</title>
+    <title>{title} | Matteo Antonini</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Aktivieren der View Transitions -->
     <ClientRouter />
 
-    <!-- Dark mode initialization script according to official Tailwind documentation -->
     <script is:inline>
-      // Function to apply theme
       function applyTheme() {
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark')
@@ -85,15 +77,11 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
           document.documentElement.classList.remove('dark')
         }
       }
-
-      // Apply on initial load
       applyTheme();
-
-      // Re-apply after view transitions
       document.addEventListener('astro:after-swap', applyTheme);
     </script>
-    
-    <!-- Open Graph / Facebook -->
+
+    <!-- Open Graph -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
@@ -109,10 +97,9 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
-    
-    <!-- Strukturierte Daten für SEO -->
+
     <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
-    
+
     <style is:inline>
       body {
         font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -124,17 +111,18 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
   </head>
   <body class="text-gray-900 bg-white dark:text-gray-300 dark:bg-black transition-colors duration-300">
     <div class="bg-white dark:bg-black transition-colors duration-300">
-      <header class="mx-auto max-w-4xl py-8">
+      <header class="mx-auto max-w-4xl py-8 px-4 md:px-0">
         <div class="flex items-center justify-between">
-          <a href="/" class="text-2xl font-semibold" transition:animate="fade">Brook2</a>
+          <a href="/" class="text-xl font-semibold tracking-tight" transition:animate="fade">Matteo Antonini</a>
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center gap-6">
-            <nav class="flex items-center gap-6">
-              <a href="/" class="nav-link">Home</a>
-              <a href="/journal" class="nav-link">Journal</a>
+            <nav class="flex items-center gap-5">
+              <a href="/blog" class="nav-link">Blog</a>
               <a href="/about" class="nav-link">About</a>
-              <a href="/styleguide" class="nav-link">Styleguide</a>
+              <a href="/projects" class="nav-link">Projects</a>
+              <a href="/teaching" class="nav-link">Teaching</a>
+              <a href="/now" class="nav-link">Now</a>
             </nav>
             <DarkModeToggle />
           </div>
@@ -161,34 +149,41 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
 
         <!-- Mobile Navigation -->
         <nav id="mobile-menu" class="hidden md:hidden mt-6 pt-4 border-t border-gray-200 dark:border-gray-800 space-y-1">
-          <a href="/" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Home</a>
-          <a href="/journal" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Journal</a>
+          <a href="/blog" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Blog</a>
           <a href="/about" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">About</a>
-          <a href="/styleguide" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Styleguide</a>
+          <a href="/projects" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Projects</a>
+          <a href="/teaching" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Teaching</a>
+          <a href="/now" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Now</a>
+          <a href="/talks" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Talks</a>
+          <a href="/reading" class="block px-3 py-2 text-sm text-gray-900 dark:text-gray-300 hover:underline">Reading</a>
         </nav>
       </header>
-      
-      <main class="py-10" transition:animate="fade">
+
+      <main class="py-10 px-4 md:px-0" transition:animate="fade">
         <slot />
       </main>
-      
-      <footer class="max-w-4xl mx-auto py-8 border-t border-gray-200 dark:border-gray-800 mt-12">
-          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-sm text-gray-500 dark:text-gray-500">
-              Made by <a href="https://templatedeck.com" target="_blank" rel="noopener noreferrer" class="hover:text-gray-900 dark:hover:text-gray-100">templatedeck.com</a>
-            </div>
-            <nav class="flex items-center gap-4">
-              <a href="/" class="nav-link-footer">Home</a>
-              <a href="/journal" class="nav-link-footer">Journal</a>
-              <a href="/about" class="nav-link-footer">About</a>
-              <a href="/styleguide" class="nav-link-footer">Styleguide</a>
-            </nav>
+
+      <footer class="max-w-4xl mx-auto py-8 px-4 md:px-0 border-t border-gray-200 dark:border-gray-800 mt-12">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div class="text-sm text-gray-500 dark:text-gray-500">
+            © {new Date().getFullYear()} Matteo Antonini
           </div>
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+            <nav class="flex items-center gap-4 flex-wrap">
+              <a href="/now" class="nav-link-footer">Now</a>
+              <a href="/reading" class="nav-link-footer">Reading</a>
+              <a href="/talks" class="nav-link-footer">Talks</a>
+            </nav>
+            <div class="flex items-center gap-4">
+              <a href="https://www.linkedin.com/in/antonini-matteo/" target="_blank" rel="noopener noreferrer" class="nav-link-footer" aria-label="LinkedIn">LinkedIn</a>
+              <a href="https://gitlab.com/matteoantonini94" target="_blank" rel="noopener noreferrer" class="nav-link-footer" aria-label="GitLab">GitLab</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
 
     <script>
-      // Mobile menu toggle functionality
       function initMobileMenu() {
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -199,19 +194,12 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
 
         menuButton.addEventListener('click', () => {
           const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-
-          // Toggle menu visibility
           mobileMenu.classList.toggle('hidden');
-
-          // Toggle icons
           menuIcon.classList.toggle('hidden');
           closeIcon.classList.toggle('hidden');
-
-          // Update aria-expanded
           menuButton.setAttribute('aria-expanded', String(!isExpanded));
         });
 
-        // Close menu when clicking on a link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
           link.addEventListener('click', () => {
@@ -223,18 +211,13 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
         });
       }
 
-      // Dark mode toggle functionality
       function initThemeToggle() {
         const buttons = document.querySelectorAll('.theme-toggle');
-
         buttons.forEach(button => {
-          // Remove existing listener if any
           const oldHandler = button.themeToggleHandler;
           if (oldHandler) {
             button.removeEventListener('click', oldHandler);
           }
-
-          // Create handler function
           const handler = function() {
             if (document.documentElement.classList.contains('dark')) {
               localStorage.theme = 'light';
@@ -244,17 +227,14 @@ const jsonLD = type === 'article' && jsonLDArticle ? jsonLDArticle : jsonLDWebsi
               document.documentElement.classList.add('dark');
             }
           };
-
           button.themeToggleHandler = handler;
           button.addEventListener('click', handler);
         });
       }
 
-      // Initialize on page load
       initMobileMenu();
       initThemeToggle();
 
-      // Re-initialize after view transitions
       document.addEventListener('astro:after-swap', () => {
         initMobileMenu();
         initThemeToggle();

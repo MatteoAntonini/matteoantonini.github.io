@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Projects"
+  description="Personal projects by Matteo Antonini — AI Engineer."
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-12" transition:animate="fade">
+      <h1 class="text-5xl mb-4">Projects</h1>
+      <p class="text-xl text-gray-500 dark:text-gray-400">
+        Personal projects in progress. Check back soon.
+      </p>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none" transition:animate="fade">
+      <p>
+        In the meantime, browse the code on{' '}
+        <a href="https://gitlab.com/matteoantonini94" target="_blank" rel="noopener noreferrer">
+          GitLab →
+        </a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>

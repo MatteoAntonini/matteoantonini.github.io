@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Now"
+  description="What Matteo Antonini is working on right now."
+>
+  <div class="max-w-3xl mx-auto">
+    <header class="mb-12" transition:animate="fade">
+      <h1 class="text-5xl mb-4">Now</h1>
+      <p class="text-sm text-gray-400 dark:text-gray-500">Last updated: June 2026</p>
+    </header>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none" transition:animate="fade">
+      <h2>Work</h2>
+      <p>
+        Working as an AI Engineer. Day-to-day focus is on agentic
+        AI and multi-agent system design for clients in energy, telco, and public administration.
+      </p>
+
+      <h2>Side projects</h2>
+      <p>
+        Building personal and business automations using n8n and Apify — mostly tools that
+        eliminate repetitive workflows: scraping, data processing, notifications, integrations.
+        Lots of trial and error, which is the point.
+      </p>
+
+      <h2>Teaching</h2>
+      <p>
+        Running the multi-agent systems module for the <a href="/teaching">Master CESMA</a> at
+        the University of Rome Tor Vergata, 2026 edition.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
