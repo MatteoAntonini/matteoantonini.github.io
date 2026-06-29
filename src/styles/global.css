@@ -303,7 +303,10 @@
   
   /* Tables */
   table {
-    @apply w-full mb-6 border-collapse;
+    @apply mb-6 border-collapse max-w-full;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   caption {
